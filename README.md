@@ -12,10 +12,10 @@
  
  ![image](https://user-images.githubusercontent.com/67505790/169731715-8fce3f4e-e4b5-4e87-851c-d9d7b23290a2.png)
 
- Para escolher qual Banco você quer ou criar com o nome que deseja apenas altere esse linha
+ Para escolher qual Banco você quer ou criar com o nome que deseja apenas altere esse linha dentro do connectionStrings.
  
-#Catalog=DBBruno
-#Catlog=Qualquernome
+# Catalog=DBBruno
+# Catlog=Qualquernome
 Ele cria automatico ja o banco com esse nome
 
 Não esta configurado no banco limitações de caracteres vou implementar isso ainda.
