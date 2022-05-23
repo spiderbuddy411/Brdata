@@ -16,4 +16,4 @@
  
 Catalog=DBBruno
 
-De resto ele faz sosinho cria a DB automatico ao clicar para registrar algum usuario.
+# Precisa apenas do SQL Server Instalado na Maquina com as estancias ativas, de resto o Entity faz a Magica dele.
