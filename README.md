@@ -14,8 +14,8 @@
 
  Para escolher qual Banco você quer ou criar com o nome que deseja apenas altere esse linha
  
-Catalog=DBBruno
-Catlog=Qualquernome
+#Catalog=DBBruno
+#Catlog=Qualquernome
 Ele cria automatico ja o banco com esse nome
 
 Não esta configurado no banco limitações de caracteres vou implementar isso ainda.
