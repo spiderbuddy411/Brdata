@@ -177,7 +177,7 @@
             this.textTelefone.Name = "textTelefone";
             this.textTelefone.Size = new System.Drawing.Size(98, 20);
             this.textTelefone.TabIndex = 5;
-            this.textTelefone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textTelefone_KeyPress);
+
             // 
             // textProcurar
             // 
@@ -259,7 +259,7 @@
             this.textCPF.Name = "textCPF";
             this.textCPF.Size = new System.Drawing.Size(132, 20);
             this.textCPF.TabIndex = 40;
-            this.textCPF.TextChanged += new System.EventHandler(this.textCPF_TextChanged);
+
             // 
             // FCadastro
             // 

@@ -23,27 +23,38 @@ namespace WindowsFormsApp1
             using (var db = new Contexto())
                 try
                 {
+
                     {
-                        var objeto = db.ObjetoCliente.Find(Convert.ToInt32(textAID.Text));
-                        objeto.Nome = textANome.Text;
-                        objeto.Email = textAEmail.Text;
-                        objeto.Telefone = textATelefone.Text;
-                        objeto.CPF = textACPF.Text;
-                        objeto.DataNasc = dateTimeANasc.Value;
+                        if (string.IsNullOrEmpty(textAID.Text) || string.IsNullOrEmpty(textANome.Text) || string.IsNullOrEmpty(textACPF.Text) || string.IsNullOrEmpty(textAEmail.Text) || string.IsNullOrEmpty(textATelefone.Text))
+                        {
+                            MessageBox.Show("Todos os Campos devem ser preenchido","!! AVISO !!");
+                        }
 
-                        db.Entry(objeto).State = System.Data.Entity.EntityState.Modified;
-                        db.SaveChanges();
+                        else
+                        {
 
-                        MessageBox.Show("Alterado com Sucesso", "Alteração no Cliente");
+                            var objeto = db.ObjetoCliente.Find(Convert.ToInt32(textAID.Text));
+                            objeto.Nome = textANome.Text;
+                            objeto.Email = textAEmail.Text;
+                            objeto.Telefone = textATelefone.Text;
+                            objeto.CPF = textACPF.Text;
+                            objeto.DataNasc = dateTimeANasc.Value;
 
+                            db.Entry(objeto).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+
+                            MessageBox.Show("Alterado com Sucesso", "Alteração no Cliente");
+                            Close();
+
+                        }
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("Cliente Ja cadastrado","Cliente ja Existente no banco de Dados");
+                    MessageBox.Show("Cliente Ja cadastrado", "Cliente ja Existente no banco de Dados");
                 }
             
-            Close();
+            
         }
 
         private void pictureExcluir_Click(object sender, EventArgs e)

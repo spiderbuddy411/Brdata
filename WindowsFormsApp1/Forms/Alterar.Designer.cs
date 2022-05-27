@@ -78,7 +78,6 @@
             // textACPF
             // 
             this.textACPF.Location = new System.Drawing.Point(67, 73);
-            this.textACPF.Mask = "999.999.999-99";
             this.textACPF.Name = "textACPF";
             this.textACPF.Size = new System.Drawing.Size(102, 20);
             this.textACPF.TabIndex = 44;

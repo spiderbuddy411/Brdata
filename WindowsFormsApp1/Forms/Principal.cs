@@ -35,10 +35,21 @@ namespace WindowsFormsApp1
         {
             using (var db = new Contexto())
             {
-                dgCliente.DataSource = "ID";
-                dgCliente.DataSource = db.ObjetoCliente.ToList();
+                //dgCliente.DataSource = "ID";
+                //dgCliente.DataSource = db.ObjetoCliente.ToList
+                dgCliente.DataSource = db.ObjetoCliente.Select(nv => new
+                {
+                    nv.ClienteID,
+                    CPF = nv.CPF,
+                    Nome = nv.Nome,
+                    Data_Nascimento = nv.DataNasc,
+                    Email = nv.Email,
+                    TELEFONE = nv.Telefone
 
+                }).ToList();
+                
 
+                
 
             }
         }
@@ -69,8 +80,7 @@ namespace WindowsFormsApp1
                     {
                      
                         db.ObjetoCliente.Add(new Cliente { Nome = textNome.Text, CPF = textCPF.Text, Email = textEmail.Text, Telefone = textTelefone.Text, DataNasc = dateTimeNasc.Value });
-                        db.SaveChanges();
-                        
+                        db.SaveChanges();                        
 
                     }
                     textNome.Text = String.Empty;
@@ -102,35 +112,42 @@ namespace WindowsFormsApp1
                     }
                     else
                     {
+                        /* String Procurar = textProcurar.Text.Trim();                        
+                         {
+                             var ProcName = db.ObjetoCliente.Where(b => b.Nome.Contains(textProcurar.Text)).ToList();
+                             //var ProcCPF = db.ObjetoCliente.Where(b => b.CPF.Contains(textProcurar.Text)).ToList();
+
+                             dgCliente.DataSource = ProcName;
+                         }*/
+                        
                         String Procurar = textProcurar.Text.Trim();
-                        dgCliente.DataSource = db.ObjetoCliente.Where(Name => Name.CPF.Contains(Procurar)).ToList();
+                        dgCliente.DataSource = db.ObjetoCliente.Where(emp => 
+                               emp.CPF.Contains(Procurar)
+                            || emp.Nome.Contains(Procurar)
+                            || emp.Email.Contains(Procurar)
+                            || emp.Telefone.Contains(Procurar)).Select(nv => new
+
+                        {
+                            nv.ClienteID,
+                            CPF = nv.CPF,
+                            Nome = nv.Nome,   
+                            Data_Nascimento = nv.DataNasc,
+                            Email = nv.Email,
+                            TELEFONE = nv.Telefone
+
+                        }).ToList();
+
                     }
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message); //DEBUG
                 }
             }
             textProcurar.Text = String.Empty;
         }
 
-        private void textCPF_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
-
-        }
-
-        private void textTelefone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
-        }
 
         private void btnAlterar1_Click_1(object sender, EventArgs e)
         {
@@ -138,18 +155,6 @@ namespace WindowsFormsApp1
             formAlterarCliente.ShowDialog();
         }
 
-        private void textCPF_TextChanged(object sender, EventArgs e)
-        {
-            MaskedTextBox textCPF = new MaskedTextBox();
-
-            if (textCPF.Text.Length == 11)
-
-                textCPF.Mask = "000.000.000-00";
-
-            else
-
-                textCPF.Mask = "00.000.000/0000-00";
-        }
 
     }
 }
