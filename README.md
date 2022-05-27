@@ -16,8 +16,9 @@
  
 # Catalog=DBBruno
 # Catlog=Qualquernome
-Ele cria automatico ja o banco com esse nome
+Ele cria automático já o banco com nome que está em  Catlog=
 
-Não esta configurado no banco limitações de caracteres vou implementar isso ainda.
+OBS: não está configurado no FistCode a configuração do tamanho de caracteres nas tabelas.
 
-# Precisa apenas do SQL Server Instalado na Maquina com as estancias ativas, de resto o Entity faz a Magica dele.
+
+Precisa apenas do SQL Server Instalado na Máquina com as instâncias ativas, de resto o Entity faz a Mágica dele. 
